@@ -2,6 +2,8 @@ defmodule Firestorm.AuthController do
   use Firestorm.Web, :controller
   plug Ueberauth
 
+  alias Firestorm.{ErrorView, UserView}
+
   def callback(%{assigns: %{ueberauth_auth: auth}} = conn, _params) do
     result = with {:ok, user} <- user_from_auth(auth),
                   :ok <- validate_pass(user.encrypted_password, auth.credentials.other.password),
@@ -9,13 +11,13 @@ defmodule Firestorm.AuthController do
 
     case result do
       {:ok, user, token} ->
-          conn
-          |> put_status(:created)
-          |> render(UserView, "show.json", user: user, token: token)
+        conn
+        |> put_status(:created)
+        |> render(UserView, "show.json", user: user, token: token)
       {:error, reason} ->
         conn
         |> put_status(:bad_request)
-        |> render("error.json", error: reason)
+        |> render(ErrorView, "error.json", error: reason)
     end
   end
 
