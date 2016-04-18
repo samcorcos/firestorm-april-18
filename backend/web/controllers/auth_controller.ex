@@ -33,7 +33,7 @@ defmodule Firestorm.AuthController do
   end
 
   defp validate_pass(encrypted, password) do
-    if Bcrypt.checkpw(password, encrypted) do
+    if Comeonin.Bcrypt.checkpw(password, encrypted) do
       :ok
     else
       {:error, "invalid password"}
