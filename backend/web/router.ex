@@ -33,6 +33,6 @@ defmodule Firestorm.Router do
   scope "/auth" do
     pipe_through [:api, :api_auth]
 
-    post "/:identity/callback", AuthController, :callback
+    post "/:identity/callback", Firestorm.AuthController, :callback
   end
 end

@@ -20,7 +20,7 @@ defmodule Firestorm.AuthController do
   end
 
   defp user_from_auth(auth) do
-    case Repo.one(User, email: auth.info.email) do
+    case Repo.one(Firestorm.User, email: auth.info.email) do
       nil -> {:error, "invalid username"}
       user -> {:ok, user}
     end
