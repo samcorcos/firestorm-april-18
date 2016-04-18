@@ -1,0 +1,34 @@
+.button {
+  color: white;
+  border-radius: 5px;
+  border: 1px;
+  padding: 0.8rem 2rem;
+  cursor: pointer;
+  font-size: 1em;
+  align-self: center;
+}
+
+.primary {
+  composes: button;
+  background: #FFD54F;
+  &:hover {
+    background: lighten(#FFD54F, 15%);
+  }
+}
+
+.flat {
+  composes: button;
+  background: white;
+  color: #FFD54F;
+  &:hover {
+    background: lighten(#FFD54F, 30%);
+  }
+}
+
+.disabled {
+  composes: button;
+  color: rgba(0,0,0,0.1);
+  cursor: disabled;
+  background: rgba(0,0,0,0.2);
+  pointer-events: none;
+}

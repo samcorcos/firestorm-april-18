@@ -1,0 +1,41 @@
+.backdrop {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(255,255,255,0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 900;
+}
+
+.modal {
+  background: white;
+  min-height: 100px;
+  min-width: 100px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  max-height: 90vh;
+  overflow: scroll;
+  max-width: 90vw;
+  position: relative;
+}
+
+.close {
+  color: #ccc;
+  border-radius: 50%;
+  position: absolute;
+  height: 20px;
+  width: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  top: 10;
+  right: 10;
+  &:hover {
+    background: #ccc;
+    color: white;
+  }
+}
